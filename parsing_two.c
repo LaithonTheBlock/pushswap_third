@@ -3,101 +3,99 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_two.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
+/*   By: lnazzal <lnazzal@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/14 13:05:26 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/19 21:14:09 by oalroyei         ###   ########.fr       */
+/*   Created: 2026/10/22 19:59:31 by lnazzal           #+#    #+#             */
+/*   Updated: 2026/10/22 19:59:34 by lnazzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-int	count_tokens(char **tab)
+int	is_valid_number(char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (tab[i])
+	if (str[i] == '+' || str[i] == '-')
 		i++;
-	return (i);
-}
-
-int	count_numbers(int argc, char **argv)
-{
-	char	**tab;
-	int		i;
-	int		total;
-
-	i = 1;
-	total = 0;
-	while (i < argc)
+	if (str[i] == '\0')
+		return (0);
+	while (str[i])
 	{
-		tab = ft_split(argv[i], ' ');
-		if (tab == NULL)
-			return (-1);
-		if (tab[0] == NULL)
-		{
-			free_split(tab);
-			return (-1);
-		}
-		total += count_tokens(tab);
-		free_split(tab);
-		i++;
-	}
-	return (total);
-}
-
-int	fill_tokens(int *arr, char **tab, int *k)
-{
-	long	n;
-	long	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		if (!is_valid_number(tab[i]))
+		if (str[i] < '0' || str[i] > '9')
 			return (0);
-		n = ft_atol(tab[i]);
-		if (!is_int_range(n))
-			return (0);
-		arr[*k] = (int)n;
-		(*k)++;
 		i++;
 	}
 	return (1);
 }
 
-static int	*free_null(char **tab, int *arr)
+int	is_int_range(long n)
 {
-	free_split(tab);
-	free(arr);
+	if (n >= INT_MIN && n <= INT_MAX)
+		return (1);
 	return (0);
 }
 
-int	*parse_args(int argc, char **argv, int *size)
+long	ft_atol(char *str)
 {
-	char	**tab;
-	int		*arr;
-	int		i;
-	int		k;
+	long	result;
+	long	sign;
+	long	limit;
 
-	*size = count_numbers(argc, argv);
-	if (*size == -1)
-		return (NULL);
-	arr = malloc (*size * sizeof(int));
-	if (!arr)
-		return (NULL);
-	i = 1;
-	k = 0;
-	while (i < argc)
+	sign = 1;
+	while ((*str == ' ') || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		tab = ft_split(argv[i], ' ');
-		if (!tab || !fill_tokens(arr, tab, &k))
-			return (free_null(tab, arr));
-		free_split(tab);
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	limit = INT_MAX;
+	if (sign == -1)
+		limit = -(long)INT_MIN;
+	result = 0;
+	while (*str >= '0' && *str <= '9')
+	{
+		if (result > (limit - (*str - '0')) / 10)
+			return (limit + 1);
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
+}
+
+int	has_duplicates(int *arr, int size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] == arr[j])
+				return (1);
+			j++;
+		}
 		i++;
 	}
-	if (has_duplicates(arr, *size))
-		return (free_null(NULL, arr));
-	return (arr);
+	return (0);
+}
+
+void	free_split(char **tab)
+{
+	size_t	i;
+
+	if (!tab)
+		return ;
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }
