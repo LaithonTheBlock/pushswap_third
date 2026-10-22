@@ -6,7 +6,7 @@
 /*   By: lnazzal <lnazzal@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/17 18:00:04 by lnazzal           #+#    #+#             */
-/*   Updated: 2026/10/19 19:21:11 by lnazzal          ###   ########.fr       */
+/*   Updated: 2026/10/22 21:01:18 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -20,7 +20,7 @@ void	ra(t_stack *stack_a)
 		return ;
 	temp = stack_a->value;
 	last = stack_last(stack_a);
-	while (stack_a->next != last)
+	while (stack_a != last)
 	{
 		stack_a->value = stack_a->next->value;
 		stack_a = stack_a->next;
@@ -37,7 +37,7 @@ void	rb(t_stack *stack_b)
 		return ;
 	temp = stack_b->value;
 	last = stack_last(stack_b);
-	while (stack_b->next != last)
+	while (stack_b != last)
 	{
 		stack_b->value = stack_b->next->value;
 		stack_b = stack_b->next;
