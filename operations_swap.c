@@ -6,35 +6,37 @@
 /*   By: lnazzal <lnazzal@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/17 15:51:42 by lnazzal           #+#    #+#             */
-/*   Updated: 2026/10/24 22:04:55 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/25 20:56:37 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	sa(t_stack *stack_a)
+static void	swap(t_stack *stack)
 {
 	int	temp;
 
-	if (!stack_a || !stack_a->next)
+	if (!stack || !stack->next)
 		return ;
-	temp = stack_a->value;
-	stack_a->value = stack_a->next->value;
-	stack_a->next->value = temp;
+	temp = stack->value;
+	stack->value = stack->next->value;
+	stack->next->value = temp;
+}
+
+void	sa(t_stack *stack_a)
+{
+	swap(stack_a);
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_stack *stack_b)
 {
-	int	temp;
-
-	if (!stack_b || !stack_b->next)
-		return ;
-	temp = stack_b->value;
-	stack_b->value = stack_b->next->value;
-	stack_b->next->value = temp;
+	swap(stack_b);
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
-	sa(stack_a);
-	sb(stack_b);
+	swap(stack_a);
+	swap(stack_b);
+	write(1, "ss\n", 3);
 }
