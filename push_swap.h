@@ -6,7 +6,7 @@
 /*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 16:06:52 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/24 22:16:21 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/25 21:59:31 by lnazzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
 void	tiny_sort(t_stack **a);
 void	index_stack(t_stack *a);
-void	tiny_sort_improved(t_stack **a, t_stack **b);
+void	selection_sort(t_stack **a, t_stack **b);
+void	radix_sort(t_stack **a, t_stack **b);
 bool	stack_sorted(t_stack *stack);
 long	ft_atol(char *str);
 size_t	ft_strlen(const char *s);
