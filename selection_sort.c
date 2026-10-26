@@ -6,13 +6,13 @@
 /*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/24 21:58:51 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/24 22:17:13 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/26 17:50:53 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	selection_sort(t_stack **a, t_stack **b)
+void	selection_sort(t_stack **a, t_stack **b, int *counter)
 {
 	t_stack	*lowest;
 
@@ -21,13 +21,13 @@ void	selection_sort(t_stack **a, t_stack **b)
 		lowest = find_lowest(*a);
 		if (find_position(*a) <= stack_size(*a) / 2)
 			while (*a != lowest)
-				ra(a);
+				ra(a, counter);
 		else
 			while (*a != lowest)
-				rra(a);
-		pb(a, b);
+				rra(a, counter);
+		pb(a, b, counter);
 	}
-	tiny_sort(a);
+	tiny_sort(a, counter);
 	while (*b)
-		pa(a, b);
+		pa(a, b, counter);
 }

@@ -6,7 +6,7 @@
 /*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 16:06:52 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/25 21:59:31 by lnazzal          ###   ########.fr       */
+/*   Updated: 2026/10/26 18:14:14 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,21 @@ t_stack	*find_lowest(t_stack *stack_a);
 void	free_split(char **tab);
 void	stack_add_back(t_stack **stack, t_stack *new);
 void	stack_free(t_stack **stack);
-void	sa(t_stack *stack_a);
-void	sb(t_stack *stack_b);
-void	ss(t_stack *stack_a, t_stack *stack_b);
-void	pa(t_stack **stack_a, t_stack **stack_b);
-void	pb(t_stack **stack_a, t_stack **stack_b);
-void	ra(t_stack **stack_a);
-void	rb(t_stack **stack_b);
-void	rr(t_stack **stack_a, t_stack **stack_b);
-void	rra(t_stack **stack_a);
-void	rrb(t_stack **stack_b);
-void	rrr(t_stack **stack_a, t_stack **stack_b);
-void	tiny_sort(t_stack **a);
+void	sa(t_stack *stack_a, int *counter);
+void	sb(t_stack *stack_b, int *counter);
+void	ss(t_stack *stack_a, t_stack *stack_b, int *counter);
+void	pa(t_stack **stack_a, t_stack **stack_b, int *counter);
+void	pb(t_stack **stack_a, t_stack **stack_b, int *counter);
+void	ra(t_stack **stack_a, int *counter);
+void	rb(t_stack **stack_b, int *counter);
+void	rr(t_stack **stack_a, t_stack **stack_b, int *counter);
+void	rra(t_stack **stack_a, int *counter);
+void	rrb(t_stack **stack_b, int *counter);
+void	rrr(t_stack **stack_a, t_stack **stack_b, int *counter);
+void	tiny_sort(t_stack **a, int *counter);
 void	index_stack(t_stack *a);
-void	selection_sort(t_stack **a, t_stack **b);
-void	radix_sort(t_stack **a, t_stack **b);
+void	selection_sort(t_stack **a, t_stack **b, int *counter);
+void	radix_sort(t_stack **a, t_stack **b, int *counter);
 bool	stack_sorted(t_stack *stack);
 long	ft_atol(char *str);
 size_t	ft_strlen(const char *s);

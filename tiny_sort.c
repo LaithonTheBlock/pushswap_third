@@ -6,7 +6,7 @@
 /*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 18:04:52 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/25 21:45:07 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/26 19:23:25 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_stack	*find_highest(t_stack *stack_a)
 
 t_stack	*find_lowest(t_stack *stack_a)
 {
-	t_stack *lowest;
+	t_stack	*lowest;
 
 	lowest = stack_a;
 	while (stack_a)
@@ -55,15 +55,15 @@ int	find_position(t_stack *stack_a)
 	return (pos);
 }
 
-void	tiny_sort(t_stack **a)
+void	tiny_sort(t_stack **a, int *counter)
 {
 	t_stack	*highest;
 
 	highest = find_highest(*a);
 	if (*a == highest)
-		ra(a);
+		ra(a, counter);
 	else if ((*a)->next == highest)
-		rra(a);
+		rra(a, counter);
 	if ((*a)->value > (*a)->next->value)
-		sa(*a);
+		sa(*a, counter);
 }
