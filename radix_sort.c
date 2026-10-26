@@ -6,12 +6,12 @@
 /*   By: lnazzal <lnazzal@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 21:01:01 by lnazzal           #+#    #+#             */
-/*   Updated: 2026/10/25 21:58:18 by lnazzal          ###   ########.fr       */
+/*   Updated: 2026/10/26 18:14:02 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	bits_max(t_stack *stack_a, int size)
+static int	bits_max(int size)
 {
 	int	val;
 	int	bits;
@@ -23,7 +23,7 @@ int	bits_max(t_stack *stack_a, int size)
 	return (bits);
 }
 
-void	radix_sort(t_stack **stack_a, t_stack **stack_b)
+void	radix_sort(t_stack **stack_a, t_stack **stack_b, int *counter)
 {
 	int	i;
 	int	j;
@@ -31,7 +31,7 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 	int	bits;
 
 	size = stack_size(*stack_a);
-	bits = bits_max(*stack_a, size);
+	bits = bits_max(size);
 	i = 0;
 	while (i < bits)
 	{
@@ -39,13 +39,13 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 		while (j < size)
 		{
 			if ((((*stack_a)->current >> i) & 1) == 0)
-				pb(stack_a, stack_b);
+				pb(stack_a, stack_b, counter);
 			else
-				ra(stack_a);
+				ra(stack_a, counter);
 			j++;
 		}
 		while (stack_size(*stack_b) > 0)
-			pa(stack_a, stack_b);
+			pa(stack_a, stack_b, counter);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/17 20:24:56 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/24 21:46:17 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/26 18:15:37 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -20,13 +20,15 @@ int	main(int argc, char **argv)
 	int		*numbers;
 	int		size;
 	int		i;
+	int		counter;
 
 	if (argc > 1)
 	{
+		counter = 0;
 		numbers = parse_args(argc, argv, &size);
 		if (!numbers)
 		{
-			printf("Error\n");
+			write(2, "Error\n", 6);
 			return (0);
 		}
 		head = stack_new(numbers[0]);
@@ -39,17 +41,13 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		stack_b = NULL;
-		tiny_sort_improved(&head, &stack_b);
+		selection_sort(&head, &stack_b, &counter);
 		current = head;
-		/*while (current)
-		{
-			printf("%d\n", current->value);
-			current = current->next;
-		}*/
 		if (stack_sorted(head))
 			printf("sorted");
 		else
 			printf("not sorted");
+		printf("\n%d", counter);
 		free(numbers);
 		stack_free(&head);
 	}
