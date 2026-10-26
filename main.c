@@ -6,7 +6,7 @@
 /*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/17 20:24:56 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/24 21:46:17 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/26 20:03:42 by lnazzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -39,7 +39,14 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		stack_b = NULL;
-		tiny_sort_improved(&head, &stack_b);
+		index_stack(head);
+		size = stack_size(head);
+		if (stack_sorted(head));
+		else if (size == 2) sa(head);
+		else if (size == 3) tiny_sort(&head);
+		else if (size <= 5) selection_sort(&head, &stack_b);
+		else
+			chunk_sort(&head, &stack_b);
 		current = head;
 		/*while (current)
 		{
