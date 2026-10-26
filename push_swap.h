@@ -6,7 +6,7 @@
 /*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 16:06:52 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/26 18:14:14 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/26 20:37:28 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ typedef struct stack
 	int				current;
 	struct stack	*next;
 }	t_stack;
+
+typedef struct flags
+{
+	int	strategy;
+	int	bench_mode;
+
+	strategy = 0;
+	bench = 0;
+}
 
 char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -58,6 +67,7 @@ void	tiny_sort(t_stack **a, int *counter);
 void	index_stack(t_stack *a);
 void	selection_sort(t_stack **a, t_stack **b, int *counter);
 void	radix_sort(t_stack **a, t_stack **b, int *counter);
+void	chunk_sort(t_stack **a, t_stack **b, int *counter);
 bool	stack_sorted(t_stack *stack);
 long	ft_atol(char *str);
 size_t	ft_strlen(const char *s);
