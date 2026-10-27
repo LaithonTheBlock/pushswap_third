@@ -6,7 +6,7 @@
 /*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 18:04:52 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/26 19:23:25 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/27 19:24:18 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	find_position(t_stack *stack_a)
 	return (pos);
 }
 
-void	tiny_sort(t_stack **a, int *counter)
+void	tiny_sort(t_stack **a, t_count *counter)
 {
 	t_stack	*highest;
 

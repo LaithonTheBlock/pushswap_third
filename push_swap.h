@@ -6,7 +6,7 @@
 /*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 16:06:52 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/26 20:37:28 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:20:29 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,17 @@
 # include <stdlib.h>
 # include <limits.h>
 
+typedef enum strategy
+{
+	ADAPTIVE,
+	SIMPLE,
+	MEDIUM,
+	COMPLEX
+}	t_strategy;
+
 typedef struct stack
 {
+	int				w;
 	int				value;
 	int				current;
 	struct stack	*next;
@@ -26,12 +35,25 @@ typedef struct stack
 
 typedef struct flags
 {
-	int	strategy;
-	int	bench_mode;
+	int				bench;
+	t_strategy		strategy;
+}	t_flags;
 
-	strategy = 0;
-	bench = 0;
-}
+typedef struct count
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+	int	total;
+}	t_count;
 
 char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -52,22 +74,22 @@ t_stack	*find_lowest(t_stack *stack_a);
 void	free_split(char **tab);
 void	stack_add_back(t_stack **stack, t_stack *new);
 void	stack_free(t_stack **stack);
-void	sa(t_stack *stack_a, int *counter);
-void	sb(t_stack *stack_b, int *counter);
-void	ss(t_stack *stack_a, t_stack *stack_b, int *counter);
-void	pa(t_stack **stack_a, t_stack **stack_b, int *counter);
-void	pb(t_stack **stack_a, t_stack **stack_b, int *counter);
-void	ra(t_stack **stack_a, int *counter);
-void	rb(t_stack **stack_b, int *counter);
-void	rr(t_stack **stack_a, t_stack **stack_b, int *counter);
-void	rra(t_stack **stack_a, int *counter);
-void	rrb(t_stack **stack_b, int *counter);
-void	rrr(t_stack **stack_a, t_stack **stack_b, int *counter);
-void	tiny_sort(t_stack **a, int *counter);
+void	sa(t_stack *stack_a, t_count *counter);
+void	sb(t_stack *stack_b, t_count *counter);
+void	ss(t_stack *stack_a, t_stack *stack_b, t_count *counter);
+void	pa(t_stack **stack_a, t_stack **stack_b, t_count *counter);
+void	pb(t_stack **stack_a, t_stack **stack_b, t_count *counter);
+void	ra(t_stack **stack_a, t_count *counter);
+void	rb(t_stack **stack_b, t_count *counter);
+void	rr(t_stack **stack_a, t_stack **stack_b, t_count *counter);
+void	rra(t_stack **stack_a, t_count *counter);
+void	rrb(t_stack **stack_b, t_count *counter);
+void	rrr(t_stack **stack_a, t_stack **stack_b, t_count *counter);
+void	tiny_sort(t_stack **a, t_count *counter);
 void	index_stack(t_stack *a);
-void	selection_sort(t_stack **a, t_stack **b, int *counter);
-void	radix_sort(t_stack **a, t_stack **b, int *counter);
-void	chunk_sort(t_stack **a, t_stack **b, int *counter);
+void	selection_sort(t_stack **a, t_stack **b, t_count *counter);
+void	radix_sort(t_stack **a, t_stack **b, t_count *counter);
+void	chunk_sort(t_stack **a, t_stack **b, t_count *counter);
 bool	stack_sorted(t_stack *stack);
 long	ft_atol(char *str);
 size_t	ft_strlen(const char *s);

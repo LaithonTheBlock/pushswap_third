@@ -6,7 +6,7 @@
 /*   By: lnazzal <lnazzal@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 18:31:04 by lnazzal           #+#    #+#             */
-/*   Updated: 2026/10/26 20:26:07 by lnazzal          ###   ########.fr       */
+/*   Updated: 2026/10/27 20:10:07 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -18,7 +18,7 @@ static int	get_chunk_size(int size)
 	return (size / 11 + 1);
 }
 
-static void	push_chunks(t_stack **a, t_stack **b, int total)
+static void	push_chunks(t_stack **a, t_stack **b, int total, t_count *c)
 {
 	int	pushedd;
 
@@ -27,17 +27,17 @@ static void	push_chunks(t_stack **a, t_stack **b, int total)
 	{
 		if ((*a)->current <= pushedd)
 		{
-			pb(a, b);
-			rb(b);
+			pb(a, b, c);
+			rb(b, c);
 			pushedd++;
 		}
 		else if ((*a)->current <= pushedd + total)
 		{
-			pb(a, b);
+			pb(a, b, c);
 			pushedd++;
 		}
 		else
-			ra(a);
+			ra(a, c);
 	}
 }
 
@@ -54,7 +54,7 @@ static int	get_pos(t_stack *s, int target)
 	return (pos);
 }
 
-static void	push_back(t_stack **a, t_stack **b)
+static void	push_back(t_stack **a, t_stack **b, t_count *counter)
 {
 	int	size;
 	int	pos;
@@ -65,19 +65,19 @@ static void	push_back(t_stack **a, t_stack **b)
 		pos = get_pos(*b, size - 1);
 		if (pos <= size / 2)
 			while (pos-- > 0)
-				rb(b);
+				rb(b, counter);
 		else
 		{
 			pos = size - pos;
 			while (pos-- > 0)
-				rrb(b);
+				rrb(b, counter);
 		}
-		pa(a, b);
+		pa(a, b, counter);
 	}
 }
 
-void	chunk_sort(t_stack **a, t_stack **b)
+void	chunk_sort(t_stack **a, t_stack **b, t_count *counter)
 {
-	push_chunks(a, b, get_chunk_size(stack_size(*a)));
-	push_back(a, b);
+	push_chunks(a, b, get_chunk_size(stack_size(*a)), counter);
+	push_back(a, b, counter);
 }
