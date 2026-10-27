@@ -6,7 +6,7 @@
 /*   By: lnazzal <lnazzal@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/17 18:00:04 by lnazzal           #+#    #+#             */
-/*   Updated: 2026/10/26 17:58:34 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:18:50 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -25,24 +25,27 @@ static void	rotate(t_stack **stack)
 	temp->next = NULL;
 }
 
-void	ra(t_stack **stack_a, int *counter)
+void	ra(t_stack **stack_a, t_count *counter)
 {
 	rotate(stack_a);
-	(*counter)++;
-	write(1, "ra\n", 3);
+	(*counter).ra++;
+	if ((**stack_a).w == 1)
+		write(1, "ra\n", 3);
 }
 
-void	rb(t_stack **stack_b, int *counter)
+void	rb(t_stack **stack_b, t_count *counter)
 {
 	rotate(stack_b);
-	(*counter)++;
-	write(1, "rb\n", 3);
+	(*counter).rb++;
+	if ((**stack_b).w == 1)
+		write(1, "rb\n", 3);
 }
 
-void	rr(t_stack **stack_a, t_stack **stack_b, int *counter)
+void	rr(t_stack **stack_a, t_stack **stack_b, t_count *counter)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	(*counter)++;
-	write(1, "rr\n", 3);
+	(*counter).rr++;
+	if ((**stack_a).w == 1 && (**stack_b).w == 1)
+		write(1, "rr\n", 3);
 }

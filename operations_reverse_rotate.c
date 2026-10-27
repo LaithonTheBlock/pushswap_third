@@ -6,7 +6,7 @@
 /*   By: lnazzal <lnazzal@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 16:40:05 by lnazzal           #+#    #+#             */
-/*   Updated: 2026/10/26 19:23:09 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/27 20:17:29 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -27,24 +27,27 @@ static void	reverse(t_stack **stack)
 	*stack = last;
 }
 
-void	rra(t_stack **stack_a, int *counter)
+void	rra(t_stack **stack_a, t_count *counter)
 {
 	reverse(stack_a);
-	(*counter)++;
-	write(1, "rra\n", 4);
+	(*counter).rra++;
+	if ((**stack_a).w == 1)
+		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack **stack_b, int *counter)
+void	rrb(t_stack **stack_b, t_count *counter)
 {
 	reverse(stack_b);
-	(*counter)++;
-	write(1, "rrb\n", 4);
+	(*counter).rrb++;
+	if ((**stack_b).w == 1)
+		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack **stack_a, t_stack **stack_b, int *counter)
+void	rrr(t_stack **stack_a, t_stack **stack_b, t_count *counter)
 {
 	reverse(stack_a);
 	reverse(stack_b);
-	(*counter)++;
-	write(1, "rrr\n", 4);
+	(*counter).rrr++;
+	if ((**stack_a).w == 1 && (**stack_b).w == 1)
+		write(1, "rrr\n", 4);
 }
