@@ -6,7 +6,7 @@
 /*   By: lnazzal <lnazzal@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 21:01:01 by lnazzal           #+#    #+#             */
-/*   Updated: 2026/10/26 18:14:02 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/27 19:25:10 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -23,7 +23,7 @@ static int	bits_max(int size)
 	return (bits);
 }
 
-void	radix_sort(t_stack **stack_a, t_stack **stack_b, int *counter)
+void	radix_sort(t_stack **stack_a, t_stack **stack_b, t_count *counter)
 {
 	int	i;
 	int	j;

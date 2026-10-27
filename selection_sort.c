@@ -6,13 +6,13 @@
 /*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/24 21:58:51 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/26 17:50:53 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/27 19:24:12 by oalroyei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	selection_sort(t_stack **a, t_stack **b, int *counter)
+void	selection_sort(t_stack **a, t_stack **b, t_count *counter)
 {
 	t_stack	*lowest;
 
