@@ -6,7 +6,7 @@
 /*   By: oalroyei <oalroyei@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 16:06:52 by oalroyei          #+#    #+#             */
-/*   Updated: 2026/10/27 20:20:29 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/29 19:12:30 by lnazzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdbool.h>
 
 typedef enum strategy
 {
@@ -37,6 +38,7 @@ typedef struct flags
 {
 	int				bench;
 	t_strategy		strategy;
+	t_strategy		chosen;
 }	t_flags;
 
 typedef struct count
@@ -55,44 +57,53 @@ typedef struct count
 	int	total;
 }	t_count;
 
-char	**ft_split(char const *s, char c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *s);
-int		is_valid_number(char *str);
-int		is_int_range(long n);
-int		stack_size(t_stack *stack);
-int		has_duplicates(int *arr, int size);
-int		count_tokens(char **tab);
-int		count_numbers(int argc, char **argv);
-int		fill_tokens(int *arr, char **tab, int *k);
-int		find_position(t_stack *stack_a);
-int		*parse_args(int argc, char **argv, int *size);
-t_stack	*stack_new(int value);
-t_stack	*stack_last(t_stack *stack);
-t_stack	*find_highest(t_stack *stack_a);
-t_stack	*find_lowest(t_stack *stack_a);
-void	free_split(char **tab);
-void	stack_add_back(t_stack **stack, t_stack *new);
-void	stack_free(t_stack **stack);
-void	sa(t_stack *stack_a, t_count *counter);
-void	sb(t_stack *stack_b, t_count *counter);
-void	ss(t_stack *stack_a, t_stack *stack_b, t_count *counter);
-void	pa(t_stack **stack_a, t_stack **stack_b, t_count *counter);
-void	pb(t_stack **stack_a, t_stack **stack_b, t_count *counter);
-void	ra(t_stack **stack_a, t_count *counter);
-void	rb(t_stack **stack_b, t_count *counter);
-void	rr(t_stack **stack_a, t_stack **stack_b, t_count *counter);
-void	rra(t_stack **stack_a, t_count *counter);
-void	rrb(t_stack **stack_b, t_count *counter);
-void	rrr(t_stack **stack_a, t_stack **stack_b, t_count *counter);
-void	tiny_sort(t_stack **a, t_count *counter);
-void	index_stack(t_stack *a);
-void	selection_sort(t_stack **a, t_stack **b, t_count *counter);
-void	radix_sort(t_stack **a, t_stack **b, t_count *counter);
-void	chunk_sort(t_stack **a, t_stack **b, t_count *counter);
-bool	stack_sorted(t_stack *stack);
-long	ft_atol(char *str);
-size_t	ft_strlen(const char *s);
-double	disorder(t_stack *stack);
+char		**ft_split(char const *s, char c);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strdup(const char *s);
+int			parse_flags(int argc, char **argv, t_flags *f);
+int			is_valid_number(char *str);
+int			is_int_range(long n);
+int			stack_size(t_stack *stack);
+int			has_duplicates(int *arr, int size);
+int			count_tokens(char **tab);
+int			count_numbers(int argc, char **argv);
+int			fill_tokens(int *arr, char **tab, int *k);
+int			find_position(t_stack *stack_a);
+int			*parse_args(int argc, char **argv, int *size);
+t_stack		*stack_new(int value);
+t_stack		*stack_last(t_stack *stack);
+t_stack		*find_highest(t_stack *stack_a);
+t_stack		*find_lowest(t_stack *stack_a);
+void		free_split(char **tab);
+void		stack_add_back(t_stack **stack, t_stack *new);
+void		stack_free(t_stack **stack);
+void		sa(t_stack *stack_a, t_count *counter);
+void		sb(t_stack *stack_b, t_count *counter);
+void		ss(t_stack *stack_a, t_stack *stack_b, t_count *counter);
+void		pa(t_stack **stack_a, t_stack **stack_b, t_count *counter);
+void		pb(t_stack **stack_a, t_stack **stack_b, t_count *counter);
+void		ra(t_stack **stack_a, t_count *counter);
+void		rb(t_stack **stack_b, t_count *counter);
+void		rr(t_stack **stack_a, t_stack **stack_b, t_count *counter);
+void		rra(t_stack **stack_a, t_count *counter);
+void		rrb(t_stack **stack_b, t_count *counter);
+void		rrr(t_stack **stack_a, t_stack **stack_b, t_count *counter);
+void		tiny_sort(t_stack **a, t_count *counter);
+void		index_stack(t_stack *a);
+void		selection_sort(t_stack **a, t_stack **b, t_count *counter);
+void		radix_sort(t_stack **a, t_stack **b, t_count *counter);
+void		chunk_sort(t_stack **a, t_stack **b, t_count *counter);
+void		sort_stack(t_stack **a, t_stack **b, t_count *c, t_flags *f);
+void		print_bench(t_flags *f, t_count *c, double disorder);
+void		ft_putstr_fd(char *s, int fd);
+void		ft_putnbr_fd(int n, int fd);
+void		print_disorder(double disorder);
+void		print_total(int total);
+void		print_strategy(t_flags *f);
+bool		stack_sorted(t_stack *stack);
+long		ft_atol(char *str);
+size_t		ft_strlen(const char *s);
+double		disorder(t_stack *stack);
+t_strategy	choose_strategy(t_stack **a, t_flags *f, double disorder);
 
 #endif

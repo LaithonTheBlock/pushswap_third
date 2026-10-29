@@ -6,7 +6,7 @@
 /*   By: lnazzal <lnazzal@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 18:46:33 by lnazzal           #+#    #+#             */
-/*   Updated: 2026/10/22 21:26:11 by lnazzal          ###   ########.fr       */
+/*   Updated: 2026/10/28 17:09:58 by lnazzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -21,6 +21,7 @@ t_stack	*stack_new(int value)
 	elem->value = value;
 	elem->next = NULL;
 	elem->current = 0;
+	elem->w = 1;
 	return (elem);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lnazzal <lnazzal@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/17 15:51:42 by lnazzal           #+#    #+#             */
-/*   Updated: 2026/10/27 20:19:06 by oalroyei         ###   ########.fr       */
+/*   Updated: 2026/10/28 17:21:34 by lnazzal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -20,6 +20,9 @@ static void	swap(t_stack *stack)
 	temp = stack->value;
 	stack->value = stack->next->value;
 	stack->next->value = temp;
+	temp = stack->current;
+	stack->current = stack->next->current;
+	stack->next->current = temp;
 }
 
 void	sa(t_stack *stack_a, t_count *counter)
